@@ -2,11 +2,13 @@ package testscripts;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.github.javafaker.Faker;
 
 import automationcore.Base;
+import constants.Constants;
 import pages.AdminUsersPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -39,6 +41,9 @@ public class AdminUsersTest extends Base {
 		admin.enterPasswordInAdminUsersInfo(AdminPassword);
 		admin.selectUserTypeInAdminUsersInfo();
 		admin.clickOnSaveButtonInAdminUserInfo();
+		
+		boolean adminusersdisplay = admin.isAdminUserTextDisplayed();
+		Assert.assertTrue(adminusersdisplay,Constants.CREATEADMINERROR );		
 	}
 	
 	@Test
@@ -60,6 +65,9 @@ public class AdminUsersTest extends Base {
 		admin.selectUserTypeInSearchAdminUsers();
 		admin.clickOnSearchButtonAfterEnterValues();
 		
+		boolean adminusersdisplay = admin.isAdminUserTextDisplayed();
+		Assert.assertTrue(adminusersdisplay, Constants.SEARCHADMINERROR );
+		
 	}
 	@Test
 	public void verifyWhetherUserIsAbleToResetAdminUsers() throws IOException {
@@ -76,5 +84,11 @@ public class AdminUsersTest extends Base {
 		
 		AdminUsersPage admin = new AdminUsersPage(driver);
 		admin.clickOnResetButtonInAdminUsers();
+		
+		boolean adminusersdisplay = admin.isAdminUserTextDisplayed();
+		Assert.assertTrue(adminusersdisplay,Constants.RESETADMINERROR );
+		
+		
+		
     }
 }

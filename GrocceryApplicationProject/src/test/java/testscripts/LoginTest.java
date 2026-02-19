@@ -2,9 +2,11 @@ package testscripts;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.Base;
+import constants.Constants;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
@@ -18,6 +20,8 @@ public class LoginTest extends Base {
 		login.enterUsernameOnUsernameField(usernamevalue);
 		login.enterPasswordOnPasswordField(passwordvalue);
 		login.clickOnSigninButton();
+		boolean dashboarddisplay = login.isDashboardDisplayed();
+		Assert.assertTrue(dashboarddisplay, Constants.VALIDCREDENTIALERROR);
 	}
 	
     @Test(priority =2,description= "validating userlogin with valid username and invalid password")
@@ -28,6 +32,10 @@ public class LoginTest extends Base {
 		login.enterUsernameOnUsernameField(usernamevalue);
 		login.enterPasswordOnPasswordField(passwordvalue);
 		login.clickOnSigninButton();
+		
+		String expected = "7rmart supermarket";
+		String actual = login.dashboardText();
+		Assert.assertEquals(expected, actual,Constants.INVALIDPASSWORDERROR);
 	}
 	
     @Test(priority =3,description= "validating userlogin with invalid username and valid password")
@@ -38,6 +46,11 @@ public class LoginTest extends Base {
 		login.enterUsernameOnUsernameField(usernamevalue);
 		login.enterPasswordOnPasswordField(passwordvalue);
 		login.clickOnSigninButton();
+		
+		String expected = "7rmart supermarket";
+		String actual = login.dashboardText();
+		Assert.assertEquals(expected, actual,Constants.INVALIDUSERNAMEERROR);
+		
 	}
     
     @Test(priority =4,description= "validating userlogin with invalid credentials",groups="smoke")
@@ -48,6 +61,10 @@ public class LoginTest extends Base {
 		login.enterUsernameOnUsernameField(usernamevalue);
 		login.enterPasswordOnPasswordField(passwordvalue);
 		login.clickOnSigninButton();
+		
+		String expected = "7rmart supermarket";
+		String actual = login.dashboardText();
+		Assert.assertEquals(expected, actual,Constants.INVALIDCREDENTIALERROR);
 	}
 	
 

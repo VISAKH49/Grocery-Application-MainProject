@@ -18,13 +18,14 @@ public WebDriver driver;
 	@FindBy(xpath="//input[@name='username']")WebElement username;
 	@FindBy(xpath="//input[@name='password']")WebElement password;
 	@FindBy(xpath="//button[@type='submit']")WebElement signinbutton;
-	
+	@FindBy(xpath ="//p[text()='Dashboard']")WebElement dashboardtile;
+	@FindBy(xpath ="//b[text()='7rmart supermarket']")WebElement logintext;
 	
 	
 	
 	public void enterUsernameOnUsernameField(String usernamevalue) {
 		username.sendKeys(usernamevalue);
-			
+		
 	}
 	
 	public void enterPasswordOnPasswordField(String passwordvalue) {
@@ -32,10 +33,18 @@ public WebDriver driver;
 		
 	}
 	 
-
 	 public void clickOnSigninButton() {
 		 signinbutton.click();
 		
+	 }
+	 
+	 public boolean isDashboardDisplayed() {
+		return dashboardtile.isDisplayed();
+			 
+	 }
+	 
+	 public String dashboardText() {
+		 return logintext.getText();
 	 }
 
 }
