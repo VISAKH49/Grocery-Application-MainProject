@@ -19,5 +19,7 @@ public class Constants {
 	public static final String ADDNEWSERROR = "user was unable to add new news";
 	public static final String SEARCHNEWSERROR = "user was unable to search news";
 	public static final String RESETNEWSERROR = "user was unable to reset news";
+	
+	public static final String DROPDOWNVALUE = "staff";
 }
 

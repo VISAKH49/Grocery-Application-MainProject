@@ -24,20 +24,26 @@ WaitUtility wait = new WaitUtility();
 	@FindBy(xpath ="//p[text()='Dashboard']")WebElement dashboardtile;
 	@FindBy(xpath ="//b[text()='7rmart supermarket']")WebElement logintext;
 	
-	public void clickOnAdminLogoutIcon() {
+	public HomePage clickOnAdminLogoutIcon() {
+		wait.waitUntilElementToBeClickable(driver, adminlogouticon);
 		adminlogouticon.click();
+		return this;
 		
 	}
-	public void clickOnLogoutButton() {
+	public LoginPage clickOnLogoutButton() {
 		wait.waitUntilElementToBeClickable(driver, logout);
 		logout.click();
-		
+		return new LoginPage(driver);
 	}
-	public void clickOnManageNewsMoreInfo() {
+	public ManageNewsPage clickOnManageNewsMoreInfo() {
+		wait.waitUntilElementToBeClickable(driver, managenewsmoreinfo);
     	managenewsmoreinfo.click();
+    	return new ManageNewsPage(driver);
 	}
-	public void clickOnAdminUsersMoreInfo() {
+	public AdminUsersPage clickOnAdminUsersMoreInfo() {
+		wait.waitUntilElementToBeClickable(driver, adminusersmoreinfo);
 		adminusersmoreinfo.click();	
+		return new AdminUsersPage(driver);
 	}
 	
 	public boolean isDashboardDisplayed() {

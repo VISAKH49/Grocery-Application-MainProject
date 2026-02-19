@@ -103,7 +103,7 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="testscripts.ManageNewsTest" class="method navigator-link" hash-for-method="verifyWhetherUserIsAbleToSearchTheAddedNews">verifyWhetherUserIsAbleToSearchTheAddedNews</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite" title="testscripts.AdminUsersTest" class="method navigator-link" hash-for-method="verifyWhetherUserIsAbleToResetAdminUsers">verifyWhetherUserIsAbleToResetAdminUsers</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -121,14 +121,14 @@
           <div class="suite-Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">testscripts.ManageNewsTest</span>
+              <span class="class-name">testscripts.AdminUsersTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verifyWhetherUserIsAbleToSearchTheAddedNews">
-                  </a> <!-- verifyWhetherUserIsAbleToSearchTheAddedNews -->
-                  <span class="method-name">verifyWhetherUserIsAbleToSearchTheAddedNews</span>
+                  <a name="verifyWhetherUserIsAbleToResetAdminUsers">
+                  </a> <!-- verifyWhetherUserIsAbleToResetAdminUsers -->
+                  <span class="method-name">verifyWhetherUserIsAbleToResetAdminUsers</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -149,11 +149,11 @@
   &lt;test thread-count=&quot;5&quot; name=&quot;Test&quot;&gt;
     &lt;parameter name=&quot;browser&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;testscripts.ManageNewsTest&quot;&gt;
+      &lt;class name=&quot;testscripts.AdminUsersTest&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;verifyWhetherUserIsAbleToSearchTheAddedNews&quot;/&gt;
+          &lt;include name=&quot;verifyWhetherUserIsAbleToResetAdminUsers&quot;/&gt;
         &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- testscripts.ManageNewsTest --&gt;
+      &lt;/class&gt; &lt;!-- testscripts.AdminUsersTest --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -195,9 +195,9 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyWhetherUserIsAbleToSearchTheAddedNews')
-data.setCell(0, 2, 'testscripts.ManageNewsTest')
-data.setCell(0, 3, 2072);
+data.setCell(0, 1, 'verifyWhetherUserIsAbleToResetAdminUsers')
+data.setCell(0, 2, 'testscripts.AdminUsersTest')
+data.setCell(0, 3, 2387);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
@@ -221,11 +221,11 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">testscripts.ManageNewsTest</span>
+              <span class="ignored-class-name">testscripts.AdminUsersTest</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">verifyWhetherUserIsAbleToResetTheNews</span>
+                <span class="ignored-method-name">verifyWhetherUserIsAbleToAddUserInAdminUsers</span>
                 <br/>
-                <span class="ignored-method-name">verifyWhetherUserIsAbleToAddNewNews</span>
+                <span class="ignored-method-name">verifyWhetherUserIsAbleToSearchAdminUsers</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -237,18 +237,18 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">testscripts.ManageNewsTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">testscripts.AdminUsersTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">initialiseBrowser(chrome)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">verifyWhetherUserIsAbleToSearchTheAddedNews</span>
-                <span class="method-start">2230 ms</span>
+                <span class="method-name">verifyWhetherUserIsAbleToResetAdminUsers</span>
+                <span class="method-start">2343 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">driverQuit([TestResult name=verifyWhetherUserIsAbleToSearchTheAddedNews status=SUCCESS method=ManageNewsTest.ve...)</span>
-                <span class="method-start">4309 ms</span>
+                <span class="method-name">driverQuit([TestResult name=verifyWhetherUserIsAbleToResetAdminUsers status=SUCCESS method=AdminUsersTest.verif...)</span>
+                <span class="method-start">4738 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

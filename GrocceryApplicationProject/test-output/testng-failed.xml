@@ -10,8 +10,8 @@
       <class name="testscripts.ManageNewsTest">
         <methods>
           <include name="initialiseBrowser"/>
-          <include name="verifyWhetherUserIsAbleToAddNewNews"/>
           <include name="driverQuit"/>
+          <include name="verifyWhetherUserIsAbleToSearchTheAddedNews"/>
         </methods>
       </class> <!-- testscripts.ManageNewsTest -->
     </classes>

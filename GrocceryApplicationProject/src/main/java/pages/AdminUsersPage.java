@@ -1,16 +1,21 @@
 package pages;
 
+import java.nio.file.Watchable;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import constants.Constants;
 import utilities.PageUtility;
+import utilities.WaitUtility;
 
 public class AdminUsersPage {
 public WebDriver driver;
 PageUtility page = new PageUtility();
+WaitUtility wait = new WaitUtility();
 	
 	public AdminUsersPage(WebDriver driver) {
 		
@@ -29,42 +34,55 @@ PageUtility page = new PageUtility();
 	@FindBy(xpath ="//a[contains(@href,'com/admin/list-admin')and contains(@class,'btn-warning')]")WebElement resetinadminusers;
 	@FindBy(xpath="//h1[@class='m-0 text-dark' and text()='Admin Users']")WebElement adminUserText;
 	
-	 public void clickOnNewButtonInAdminUsers() {
+	 public AdminUsersPage clickOnNewButtonInAdminUsers() {
+		 wait.waitUntilElementToBeClickable(driver, newinadminusers);
 	    	newinadminusers.click();
+	    	return this;
     }
-	 public void enterUsernameInAdminUsersInfo(String AdminUsername) {
+	 public AdminUsersPage enterUsernameInAdminUsersInfo(String AdminUsername) {
 		 usernameinadminusersinfo.sendKeys(AdminUsername);	
+		 return this;
 	}
-	 public void enterPasswordInAdminUsersInfo(String AdminPassword) {
+	 public AdminUsersPage enterPasswordInAdminUsersInfo(String AdminPassword) {
 		passwordinadminusersinfo.sendKeys(AdminPassword);
+		return this;
 	}
-	 public void selectUserTypeInAdminUsersInfo() {
-		 page.selectDragDropWithText(dropdown,"staff");
-		 //Select s1= new Select(dropdown);
-		// s1.selectByValue("staff");	
+	 public AdminUsersPage selectUserTypeInAdminUsersInfo() {
+		 page.selectDragDropWithIndex(dropdown, 1);
+		 return this;
 	}
-	public void clickOnSaveButtonInAdminUserInfo() {
+	public AdminUsersPage clickOnSaveButtonInAdminUserInfo() {
+		wait.waitUntilElementToBeClickable(driver, saveinadminuserinfo);
 		saveinadminuserinfo.click();
+		return this;
 	}
 	
 	
 	
-	public void clickOnSearchButtonInAdminUsers() {
+	public AdminUsersPage clickOnSearchButtonInAdminUsers() {
+		wait.waitUntilElementToBeClickable(driver, searchinadminusers);
 		searchinadminusers.click();	
+		return this;
 	}
-	public void enterUserNameInSearchAdminUsers(String AdminSearchUsername) {
+	public AdminUsersPage enterUserNameInSearchAdminUsers(String AdminSearchUsername) {
 		usernameinsearchadminusers.sendKeys(AdminSearchUsername);
+		return this;
 	}
-	public void selectUserTypeInSearchAdminUsers() {
-		Select s2= new Select(usertypeinsearchadminusers);
-		s2.selectByValue("staff");	
+	public AdminUsersPage selectUserTypeInSearchAdminUsers() {
+		page.selectDragDropWithIndex(usertypeinsearchadminusers, 1);	
+		return this;
 	}
-	public void clickOnSearchButtonAfterEnterValues() {
+	public AdminUsersPage clickOnSearchButtonAfterEnterValues() {
+		wait.waitUntilElementToBeClickable(driver, searchinsearchadminusers);
 		searchinsearchadminusers.click();	
+		return this;
 	}
 	
-	public void clickOnResetButtonInAdminUsers() {
-		resetinadminusers.click();	
+	
+	public AdminUsersPage clickOnResetButtonInAdminUsers() {
+		wait.waitUntilElementToBeClickable(driver, resetinadminusers);
+		resetinadminusers.click();
+		return this;
 	}
 	
 	public boolean isAdminUserTextDisplayed()

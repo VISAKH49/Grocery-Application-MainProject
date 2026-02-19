@@ -13,6 +13,8 @@ import pages.ManageNewsPage;
 import utilities.ExcelUtility;
 
 public class ManageNewsTest extends Base{
+	HomePage homepage;
+	ManageNewsPage managepage;
 	@Test
 	public void verifyWhetherUserIsAbleToAddNewNews() throws IOException {
 		String usernamevalue = ExcelUtility.getStringData(0, 0, "LoginPage");
@@ -20,20 +22,15 @@ public class ManageNewsTest extends Base{
 		String enterthenewsvalue = ExcelUtility.getStringData(0, 0, "ManageNews");
 		
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(usernamevalue);
-		login.enterPasswordOnPasswordField(passwordvalue);
-		login.clickOnSigninButton();
+		login.enterUsernameOnUsernameField(usernamevalue).enterPasswordOnPasswordField(passwordvalue);
+		homepage=login.clickOnSigninButton();
 		
-		HomePage home = new HomePage(driver);
-		home.clickOnManageNewsMoreInfo();
 		
-		ManageNewsPage manage = new ManageNewsPage(driver);
-		manage.clickOnNewButton();
+		managepage=homepage.clickOnManageNewsMoreInfo();
 		
-		manage.enterTheNewsOnNewsField(enterthenewsvalue);
-		manage.clickOnSaveButton();
+		managepage.clickOnNewButton().enterTheNewsOnNewsField(enterthenewsvalue).clickOnSaveButton();
 		
-		boolean managenewsdisplay = manage.isManageNewsDisplayed();
+		boolean managenewsdisplay = managepage.isManageNewsDisplayed();
 		Assert.assertTrue(managenewsdisplay, Constants.ADDNEWSERROR);
 		
 	}
@@ -44,20 +41,14 @@ public class ManageNewsTest extends Base{
 		String searchthetitlevalue = ExcelUtility.getStringData(1, 0, "ManageNews");
 		
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(usernamevalue);
-		login.enterPasswordOnPasswordField(passwordvalue);
-		login.clickOnSigninButton();
+		login.enterUsernameOnUsernameField(usernamevalue).enterPasswordOnPasswordField(passwordvalue);
+		homepage=login.clickOnSigninButton();
 		
-		HomePage home = new HomePage(driver);
-		home.clickOnManageNewsMoreInfo();
+		managepage=homepage.clickOnManageNewsMoreInfo();
 		
+		managepage.clickOnSearchButton().enterSearchTitleOnSearchField(searchthetitlevalue).clickOnSearchButtonAfterEnterSearchValue();
 		
-		ManageNewsPage manage = new ManageNewsPage(driver);
-		manage.clickOnSearchButton();
-		manage.enterSearchTitleOnSearchField(searchthetitlevalue);
-		manage.clickOnSearchButtonAfterEnterSearchValue();
-		
-		boolean managenewsdisplay = manage.isManageNewsDisplayed();
+		boolean managenewsdisplay = managepage.isManageNewsDisplayed();
 		Assert.assertTrue(managenewsdisplay, Constants.SEARCHNEWSERROR );
 	
 	}
@@ -68,17 +59,15 @@ public class ManageNewsTest extends Base{
 		String passwordvalue = ExcelUtility.getStringData(0, 1, "LoginPage");
 		
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(usernamevalue);
-		login.enterPasswordOnPasswordField(passwordvalue);
-		login.clickOnSigninButton();
+		login.enterUsernameOnUsernameField(usernamevalue).enterPasswordOnPasswordField(passwordvalue);
+		homepage=login.clickOnSigninButton();
 		
-		HomePage home = new HomePage(driver);
-		home.clickOnManageNewsMoreInfo();
 		
-		ManageNewsPage manage = new ManageNewsPage(driver);
-		manage.clickOnResetButton();
+		managepage=homepage.clickOnManageNewsMoreInfo();
 		
-		boolean managenewsdisplay = manage.isManageNewsDisplayed();
+		managepage.clickOnResetButton();
+		
+		boolean managenewsdisplay = managepage.isManageNewsDisplayed();
 		Assert.assertTrue(managenewsdisplay, Constants.RESETNEWSERROR );
 		
 	}

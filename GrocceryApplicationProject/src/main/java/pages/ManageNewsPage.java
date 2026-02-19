@@ -5,8 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.WaitUtility;
+
 public class ManageNewsPage {
 public WebDriver driver;
+WaitUtility wait = new WaitUtility();
 	
 	public ManageNewsPage(WebDriver driver) {
 		
@@ -23,30 +26,42 @@ public WebDriver driver;
     @FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news']")WebElement reset;
     @FindBy(xpath="//h1[@class='m-0 text-dark' and text()='Manage News']")WebElement managenewstext;
     
-    public void clickOnNewButton() {
+    public ManageNewsPage clickOnNewButton() {
+    	wait.waitUntilElementToBeClickable(driver, newinnews);
     	newinnews.click();
+    	return this;
 	}  
-    public void enterTheNewsOnNewsField(String enterthenewsvalue) {
+    public ManageNewsPage enterTheNewsOnNewsField(String enterthenewsvalue) {
     	enterthenews.sendKeys(enterthenewsvalue);
+    	return this;
 	}
-    public void clickOnSaveButton() {
+    public ManageNewsPage clickOnSaveButton() {
+    	wait.waitUntilElementToBeClickable(driver, save);
     	save.click();
+    	return this;
 	}
     
     
-   public void clickOnSearchButton() {
+   public ManageNewsPage clickOnSearchButton() {
+	   wait.waitUntilElementToBeClickable(driver, search);;
 	   search.click();
+	   return this;
     }
-   public void enterSearchTitleOnSearchField (String searchthetitlevalue) {
+   public ManageNewsPage enterSearchTitleOnSearchField (String searchthetitlevalue) {
 	   searchtitle.sendKeys(searchthetitlevalue);
+	   return this;
     }
-   public void clickOnSearchButtonAfterEnterSearchValue() {
+   public ManageNewsPage clickOnSearchButtonAfterEnterSearchValue() {
+	   wait.waitUntilElementToBeClickable(driver, clicksearchbutton);
 	   clicksearchbutton.click();
+	   return this;
     }   
 	
    
-   public void clickOnResetButton() {
+   public ManageNewsPage clickOnResetButton() {
+	   wait.waitUntilElementToBeClickable(driver, reset);
 	  reset.click();
+	  return this;
    }
    
    
