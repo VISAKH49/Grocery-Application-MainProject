@@ -21,43 +21,39 @@ public class Base {
 	Properties prop;
 	FileInputStream fs;
 	public WebDriver driver;
-	
-@BeforeMethod(alwaysRun=true)
-@Parameters("browser")
-	public void initialiseBrowser(String browser) throws Exception
-	{
-	prop = new Properties();
-	fs = new FileInputStream(Constants.CONFIGFILE);
-	prop.load(fs);
-	if(browser.equalsIgnoreCase("chrome")) {
-		driver = new ChromeDriver();
-	}
-	else if (browser.equalsIgnoreCase("firefox")) {
-		driver = new FirefoxDriver();
-		
-	}
-	else if (browser.equalsIgnoreCase("edge")) {
-		driver = new EdgeDriver();
-		
-	}
-	else {
-		throw new Exception("INVALID BROWSER");
-	}
+
+	@BeforeMethod(alwaysRun = true)
+	@Parameters("browser")
+	public void initialiseBrowser(String browser) throws Exception {
+		prop = new Properties();
+		fs = new FileInputStream(Constants.CONFIGFILE);
+		prop.load(fs);
+		if (browser.equalsIgnoreCase("chrome")) {
+			driver = new ChromeDriver();
+		} else if (browser.equalsIgnoreCase("firefox")) {
+			driver = new FirefoxDriver();
+
+		} else if (browser.equalsIgnoreCase("edge")) {
+			driver = new EdgeDriver();
+
+		} else {
+			throw new Exception("INVALID BROWSER");
+		}
 		driver.get(prop.getProperty("url"));
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	}
-	
-@AfterMethod(alwaysRun=true)
-public void driverQuit(ITestResult iTestResult) throws IOException {
 
-	  if (iTestResult.getStatus() == ITestResult.FAILURE) {
+	@AfterMethod(alwaysRun = true)
+	public void driverQuit(ITestResult iTestResult) throws IOException {
 
-	   ScreenshotUtility screenShot = new ScreenshotUtility();
-	   screenShot.getScreenshot(driver, iTestResult.getName());
-	  }
-	  //driver.quit();
+		if (iTestResult.getStatus() == ITestResult.FAILURE) {
 
-	 }
+			ScreenshotUtility screenShot = new ScreenshotUtility();
+			screenShot.getScreenshot(driver, iTestResult.getName());
+		}
+		// driver.quit();
+
+	}
 
 }

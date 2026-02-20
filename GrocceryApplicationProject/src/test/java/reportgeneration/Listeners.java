@@ -12,89 +12,89 @@ import com.aventstack.extentreports.Status;
 import automationcore.Base;
 import utilities.ExtentReportUtility;
 
-public class Listeners extends Base implements ITestListener{
+public class Listeners extends Base implements ITestListener {
 	ExtentTest test;
-	 ExtentReports extent = ExtentReportUtility.createExtentReports();
-	 ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
+	ExtentReports extent = ExtentReportUtility.createExtentReports();
+	ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
 
-	 public void onTestStart(ITestResult result) {
+	public void onTestStart(ITestResult result) {
 
-	  ITestListener.super.onTestStart(result);
-	  test = extent.createTest(result.getMethod().getMethodName());
-	  extentTest.set(test);
+		ITestListener.super.onTestStart(result);
+		test = extent.createTest(result.getMethod().getMethodName());
+		extentTest.set(test);
 
-	 }
+	}
 
-	 public void onTestSuccess(ITestResult result) {
+	public void onTestSuccess(ITestResult result) {
 
-	  ITestListener.super.onTestSuccess(result);
-	  extentTest.get().log(Status.PASS, "Test Passed");
+		ITestListener.super.onTestSuccess(result);
+		extentTest.get().log(Status.PASS, "Test Passed");
 
-	 }
+	}
 
-	 public void onTestFailure(ITestResult result) {
+	public void onTestFailure(ITestResult result) {
 
-	  ITestListener.super.onTestFailure(result);
-	  
-	  extentTest.get().log(Status.FAIL, "Test Failed");
-	  extentTest.get().fail(result.getThrowable());
-	  
-	  WebDriver driver = null;
-	  
-	  String testMethodName = result.getMethod().getMethodName();
-	  
-	  try {
-	   
-	   driver = (WebDriver) result.getTestClass().getRealClass().getDeclaredField("driver")
-	     .get(result.getInstance());
-	  } catch (IllegalArgumentException e) {
+		ITestListener.super.onTestFailure(result);
 
-	   e.printStackTrace();
-	  } catch (IllegalAccessException e) {
+		extentTest.get().log(Status.FAIL, "Test Failed");
+		extentTest.get().fail(result.getThrowable());
 
-	   e.printStackTrace();
-	  } catch (NoSuchFieldException e) {
+		WebDriver driver = null;
 
-	   e.printStackTrace();
-	  } catch (SecurityException e) {
+		String testMethodName = result.getMethod().getMethodName();
 
-	   e.printStackTrace();
-	  }
+		try {
 
-	  try {
-	   driver = (WebDriver) result.getTestClass().getRealClass().getDeclaredField("driver")
-	     .get(result.getInstance());
-	  } catch (Exception e) {
-	  }
-	 }
+			driver = (WebDriver) result.getTestClass().getRealClass().getDeclaredField("driver")
+					.get(result.getInstance());
+		} catch (IllegalArgumentException e) {
 
-	 public void onTestSkipped(ITestResult result) {
-	  
-	  ITestListener.super.onTestSkipped(result);
-	  extentTest.get().log(Status.SKIP, "Test Skipped");
-	  String testMethodName = result.getMethod().getMethodName();
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
 
-	 }
+			e.printStackTrace();
+		} catch (NoSuchFieldException e) {
 
-	 public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
 
-	  ITestListener.super.onTestFailedButWithinSuccessPercentage(result);
-	 }
+			e.printStackTrace();
+		}
 
-	 public void onTestFailedWithTimeout(ITestResult result) {
+		try {
+			driver = (WebDriver) result.getTestClass().getRealClass().getDeclaredField("driver")
+					.get(result.getInstance());
+		} catch (Exception e) {
+		}
+	}
 
-	  ITestListener.super.onTestFailedWithTimeout(result);
-	 }
+	public void onTestSkipped(ITestResult result) {
 
-	 public void onStart(ITestContext context) {
+		ITestListener.super.onTestSkipped(result);
+		extentTest.get().log(Status.SKIP, "Test Skipped");
+		String testMethodName = result.getMethod().getMethodName();
 
-	  ITestListener.super.onStart(context);
-	 }
+	}
 
-	 public void onFinish(ITestContext context) {
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
 
-	  ITestListener.super.onFinish(context);
-	  extent.flush();
-	 }
+		ITestListener.super.onTestFailedButWithinSuccessPercentage(result);
+	}
+
+	public void onTestFailedWithTimeout(ITestResult result) {
+
+		ITestListener.super.onTestFailedWithTimeout(result);
+	}
+
+	public void onStart(ITestContext context) {
+
+		ITestListener.super.onStart(context);
+	}
+
+	public void onFinish(ITestContext context) {
+
+		ITestListener.super.onFinish(context);
+		extent.flush();
+	}
 
 }
