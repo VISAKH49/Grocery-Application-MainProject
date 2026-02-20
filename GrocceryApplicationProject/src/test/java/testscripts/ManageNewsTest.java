@@ -30,8 +30,8 @@ public class ManageNewsTest extends Base{
 		
 		managepage.clickOnNewButton().enterTheNewsOnNewsField(enterthenewsvalue).clickOnSaveButton();
 		
-		boolean managenewsdisplay = managepage.isManageNewsDisplayed();
-		Assert.assertTrue(managenewsdisplay, Constants.ADDNEWSERROR);
+		boolean alertDisplayed = managepage.isAlertTextDisplayed();
+		Assert.assertTrue(alertDisplayed,Constants.ADDNEWSERROR);
 		
 	}
 	@Test	

@@ -24,7 +24,8 @@ WaitUtility wait = new WaitUtility();
     @FindBy(xpath="//input[@type='text']")WebElement searchtitle;
     @FindBy(xpath="//button[@type='submit']")WebElement clicksearchbutton;
     @FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news']")WebElement reset;
-    @FindBy(xpath="//h1[@class='m-0 text-dark' and text()='Manage News']")WebElement managenewstext;
+    @FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")WebElement alertText;
+	@FindBy(xpath="//h1[@class='m-0 text-dark' and text()='Manage News']")WebElement managenewstext;
     
     public ManageNewsPage clickOnNewButton() {
     	wait.waitUntilElementToBeClickable(driver, newinnews);
@@ -68,6 +69,10 @@ WaitUtility wait = new WaitUtility();
    public boolean isManageNewsDisplayed()
 	{
 		return managenewstext.isDisplayed();
+	}
+   public boolean isAlertTextDisplayed()
+	{
+		return alertText.isDisplayed();
 	}
 }
     
